@@ -1,0 +1,10 @@
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\bin\Debug\dbfirst.exe.config
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\bin\Debug\dbfirst.exe
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\bin\Debug\dbfirst.pdb
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\bin\Debug\EntityFramework.dll
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\bin\Debug\EntityFramework.xml
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\obj\Debug\dbfirst.exe
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\obj\Debug\dbfirst.pdb
+C:\Users\septimandaro\Documents\Visual Studio 2015\Projects\dbfirst\dbfirst\obj\Debug\dbfirst.csprojResolveAssemblyReference.cache
