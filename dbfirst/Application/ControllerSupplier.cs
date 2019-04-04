@@ -13,7 +13,7 @@ namespace dbfirst
         static My_Context myContext = new My_Context();
         SaveChange go = new SaveChange(myContext);
         bool status = false;
-        List<TB_M_Supplier> iSupplier.Get()
+        public List<TB_M_Supplier> Get()
         {
           var get = myContext.TB_M_Supplier.ToList();
           Console.WriteLine("=====: <<< List >>> :=====");
@@ -25,11 +25,9 @@ namespace dbfirst
           return get;
         }
 
-        TB_M_Supplier iSupplier.Get(int id)
+        public TB_M_Supplier Get(int id)
         {
-            var get = myContext.TB_M_Supplier.SingleOrDefault(xo => xo.id == id);
-            Console.WriteLine(get.id);
-            Console.WriteLine(get.Name);
+            var get = myContext.TB_M_Supplier.Find(id);
             return get;
         }
         
@@ -42,12 +40,11 @@ namespace dbfirst
 
         public bool Update(int id, TB_M_Supplier supplier)
         {
-            var getSupplier = myContext.TB_M_Supplier.Find(id);
-            if (getSupplier != null)
+            if (Get(id) != null)
             {
-                getSupplier.Name = supplier.Name;
-                getSupplier.isDelete = supplier.isDelete;
-                myContext.Entry(getSupplier).State = EntityState.Modified;
+                Get(id).Name = supplier.Name;
+                Get(id).isDelete = supplier.isDelete;
+                myContext.Entry(Get(id)).State = EntityState.Modified;
                 return go.saved();
             }
             else
@@ -59,10 +56,9 @@ namespace dbfirst
 
         public bool Delete(int id)
         {
-            var get = myContext.TB_M_Supplier.SingleOrDefault(x => x.id == id);
-            if (get != null)
+            if (Get(id) != null)
             {
-                myContext.Entry(get).State = EntityState.Deleted;
+                myContext.Entry(Get(id)).State = EntityState.Deleted;
                 return go.saved();
             }
             else

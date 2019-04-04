@@ -14,7 +14,7 @@ namespace dbfirst
         SaveChange go = new SaveChange(myContext);
         bool status = false;
 
-        List<TB_T_TransactionDetail> iTransaction.Get()
+        public List<TB_T_TransactionDetail> Get()
         {
             var get = myContext.TB_T_TransactionDetail.ToList();
             Console.WriteLine("=====: <<< List >>> :=====");
@@ -28,22 +28,17 @@ namespace dbfirst
             return get;
         }
 
-        TB_T_TransactionDetail iTransaction.Get(int id)
+        public TB_T_TransactionDetail Get(int id)
         {
             var get = myContext.TB_T_TransactionDetail.SingleOrDefault(xo => xo.Id == id);
-            Console.WriteLine(get.Id);
-            Console.WriteLine(get.Quantity);
-            Console.WriteLine(get.TB_M_Sell_id);
-            Console.WriteLine(get.TB_M_Item_id);
             return get;
         }
 
         public bool Delete(int id)
         {
-            var get = myContext.TB_T_TransactionDetail.SingleOrDefault(x => x.TB_M_Sell_id == id);
-            if (get != null)
+            if (Get(id) != null)
             {
-                myContext.Entry(get).State = EntityState.Deleted;
+                myContext.Entry(Get(id)).State = EntityState.Deleted;
                 return go.saved();
             }
             else
@@ -60,12 +55,11 @@ namespace dbfirst
 
         public bool Update(int id, TB_T_TransactionDetail TDetail)
         {
-            var get = myContext.TB_T_TransactionDetail.Find(id);
-            if (get != null)
+            if (Get(id) != null)
             {
-                get.Quantity = TDetail.Quantity;
-                get.TB_M_Item_id = TDetail.TB_M_Item_id;
-                myContext.Entry(get).State = EntityState.Modified;
+                Get(id).Quantity = TDetail.Quantity;
+                Get(id).TB_M_Item_id = TDetail.TB_M_Item_id;
+                myContext.Entry(Get(id)).State = EntityState.Modified;
                 return go.saved();
             }
             else

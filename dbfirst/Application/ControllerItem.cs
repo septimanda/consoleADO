@@ -15,7 +15,7 @@ namespace dbfirst
         int supplier_id;
         bool status = false;
 
-        List<TB_M_Item> iItem.Get()
+        public List<TB_M_Item> Get()
         {
             var get = myContext.TB_M_Item.ToList();
             Console.WriteLine("=====: <<< List >>> :=====");
@@ -30,23 +30,17 @@ namespace dbfirst
             return get;
         }
 
-        TB_M_Item iItem.Get(int id)
+        public TB_M_Item Get(int id)
         {
-            var getby = myContext.TB_M_Item.SingleOrDefault(xo => xo.id == id);
-            Console.WriteLine(getby.id);
-            Console.WriteLine(getby.Name);
-            Console.WriteLine(getby.price);
-            Console.WriteLine(getby.stock);
-            Console.WriteLine(getby.TB_M_Suppliers_id);
-            return getby;
+            var get = myContext.TB_M_Item.Find(id);
+            return get;
         }
 
         public bool Delete(int id)
         {
-            var getItem = myContext.TB_M_Item.SingleOrDefault(x => x.id == id);
-            if (getItem != null)
+            if (Get(id) != null)
             {
-                myContext.Entry(getItem).State = EntityState.Deleted;
+                myContext.Entry(Get(id)).State = EntityState.Deleted;
                 return go.saved();
             }
             else
@@ -70,19 +64,18 @@ namespace dbfirst
 
         public bool Update(int id, TB_M_Item item)
         {
-            var get = myContext.TB_M_Item.Find(id);
-            if (get != null)
+            if (Get(id) != null)
             {
-                get.Name = item.Name;
-                get.price = item.price;
-                get.stock = item.stock;
+                Get(id).Name = item.Name;
+                Get(id).price = item.price;
+                Get(id).stock = item.stock;
 
                 Console.Write("Insert supplier id: ");
                 supplier_id = Convert.ToInt16(Console.ReadLine());
                 var getSupplier = myContext.TB_M_Supplier.Find(supplier_id);
-                get.TB_M_Supplier = getSupplier;
+                Get(id).TB_M_Supplier = getSupplier;
 
-                myContext.Entry(get).State = EntityState.Modified;
+                myContext.Entry(Get(id)).State = EntityState.Modified;
                 return go.saved();
             }
             else

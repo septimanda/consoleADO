@@ -13,7 +13,7 @@ namespace dbfirst
         static My_Context myContext = new My_Context();
         SaveChange go = new SaveChange(myContext);
         bool status = false;
-        List<TB_M_Sell> iSell.Get()
+        public List<TB_M_Sell> Get()
         {
             var get = myContext.TB_M_Sell.ToList();
             Console.WriteLine("=====: <<< List >>> :=====");
@@ -25,20 +25,17 @@ namespace dbfirst
             return get;
         }
 
-        TB_M_Sell iSell.Get(int id)
+        public TB_M_Sell Get(int id)
         {
-            var getby = myContext.TB_M_Sell.SingleOrDefault(xo => xo.Id == id);
-            Console.WriteLine(getby.Id);
-            Console.WriteLine(getby.OrderDate);
-            return getby;
+            var get = myContext.TB_M_Sell.SingleOrDefault(xo => xo.Id == id);
+            return get;
         }
 
         public bool Delete(int id)
         {
-            var get = myContext.TB_M_Sell.SingleOrDefault(x => x.Id == id);
-            if (get != null)
+            if (Get(id) != null)
             {
-                myContext.Entry(get).State = EntityState.Deleted;
+                myContext.Entry(Get(id)).State = EntityState.Deleted;
                 return go.saved();
             }
             else
@@ -55,11 +52,10 @@ namespace dbfirst
 
         public bool Update(int id, TB_M_Sell sell)
         {
-            var get = myContext.TB_M_Sell.Find(id);
-            if (get != null)
+            if (Get(id) != null)
             {
-                get.OrderDate = sell.OrderDate;
-                myContext.Entry(get).State = EntityState.Modified;
+                Get(id).OrderDate = sell.OrderDate;
+                myContext.Entry(Get(id)).State = EntityState.Modified;
                 return go.saved();
             }
             else
